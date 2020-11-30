@@ -1,14 +1,8 @@
 # Actions-OpenWrt
 
+##### - 最近的SSH展开比较难搞，编译的时候运行到【加载源,patch补丁和自定义设置】不会继续就是卡SSH了，立马的刷新下网页再等待，一般都能展开，因为SSH代码那里会连续展开10次的，如果实在是展不开来，就只能关闭了编译重新再开始新的编译
 #
-### [2020年11月24号凌晨更新，这次更新收罗了各大神N多插件都做成一个插件包，然后直接打入源码了，大家增加插件的时候一定要注意别胡乱的拉取别人做好的插件包，很容易造成编译失败的，还有把补丁的制作方式修改了，有使用patch来修改文件的一定要重新去看看制作补丁的方法，旧补丁已经不能再使用，使用旧补丁会编译失败](#/README.md)
-#
-#
-#### [lede源码的luci-app-dockerman跟luci-app-docker是不一样的，都是docker-ce容器，luci-app-dockerman是我后加的，两个插件不能同时编译，同时编译会失败，luci-app-docker是源码自带的，你们可以编译出来对比下那个好用就用那个好了，](#/README.md)
-#
-#
-### `启动编译时候，按钮多了几个功能，在启动教程的第一个图片有说明`《[[启动教程](https://github.com/danshui-git/shuoming/blob/master/%E6%89%8B%E5%8A%A8%E5%BC%80%E5%A7%8B.md)]》
-#
+- [lede源码的luci-app-dockerman跟luci-app-docker两个都是docker-ce容器，luci-app-dockerman是我后加的，两个插件不能同时编译，同时编译会失败，luci-app-docker是源码自带的，你们可以编译出来对比下那个好用就用那个好了，](#/README.md)
 #
 - [大家如果编译的时候没乱搞而又出现编译错误的，要善于在各个作者源码的‘Issues’找答案或者提问](#/README.md)
 
@@ -35,9 +29,9 @@
 #
 - 4、设置好要编译的机型后，在build文件夹--对应机型文件夹【diy-2.sh】修改登录IP，好等编译完成安装后顺利登录openwrt《[修改跟删除](https://github.com/danshui-git/shuoming/blob/master/%E5%88%A0%E9%99%A4%E5%92%8C%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6.md)》
 #
-- 5、`专用按钮启动`《[[启动教程](https://github.com/danshui-git/shuoming/blob/master/%E6%89%8B%E5%8A%A8%E5%BC%80%E5%A7%8B.md)]》
+- 5、`专用按钮启动`《[[启动教程](https://github.com/danshui-git/shuoming/blob/master/%E6%89%8B%E5%8A%A8%E5%BC%80%E5%A7%8B.md)]》,启动编译的时候可以顺手打开SSH连接的，请认真看教程的第一张图片
 #
-- 6、`SSH远程连接服务器配置固件`《[SSH连接教程](https://github.com/danshui-git/shuoming/blob/master/3SSH%E8%BF%9E%E6%8E%A5%E8%AF%B4%E6%98%8E.md)》，SSH远程默认关闭的，需要打开的请在build文件夹里面的对应机型文件夹的‘settings.ini’设置
+- 6、`SSH远程连接服务器配置固件`《[SSH连接教程](https://github.com/danshui-git/shuoming/blob/master/3SSH%E8%BF%9E%E6%8E%A5%E8%AF%B4%E6%98%8E.md)》，SSH远程默认关闭的，需要打开的请在build文件夹里面的对应机型文件夹的‘settings.ini’设置，或者按钮启动编译的时候顺手打开
 #
 - 7、`配置固件`《[youtube大神的固件配置视频教程](https://www.youtube.com/watch?v=jEE_J6-4E3Y)》《[恩山大神xtwz整理的插件中文对照](https://www.right.com.cn/forum/thread-3682029-1-1.html)》
 #
@@ -57,6 +51,13 @@
 《[patch补丁制作](https://github.com/danshui-git/shuoming/blob/master/buding.md)》
 #
 - 12、建议准备梯子一把，虽然云编译不需要梯子，不过你使用SSH连接、下载固件、打开github网页也是需要梯子比较好的（没有也行，比较卡就是）
+
+
+#
+## 2020年11月27号更新，把删除老旧固件和删除老旧发布的功能独立出来了，这样比较方便控制，还有把删除老旧固件放一起的话，每次编译超过2个机型的时候有删除错误的风险导致编译不能继续进行，还有修复了24号更新的一个小错误，请大家都更新你们的脚本到最新的吧
+#
+#### [2020年11月24号更新，这次更新收罗了各大神N多插件都做成一个插件包，然后直接打入源码了，大家增加插件的时候一定要注意别胡乱的拉取别人做好的插件包，很容易造成编译失败的，还有把补丁的制作方式修改了，有使用patch来修改文件的一定要重新去看看制作补订的方法，旧补订已经不能再使用，使用旧补丁会编译失败](#/README.md)
+
 #
 #
 - 感谢[coolsnowwolf](https://github.com/coolsnowwolf/lede.git)大神提供的源码
