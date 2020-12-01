@@ -1,13 +1,13 @@
 # Actions-OpenWrt
 
-##### - 最近的SSH展开比较难搞，编译的时候运行到【加载源,patch补丁和自定义设置】不会继续就是卡SSH了，立马的刷新下网页再等待，一般都能展开，因为SSH代码那里会连续展开10次的，如果实在是展不开来，就只能关闭了编译重新再开始新的编译
+##### - SSH代码展开说明，运行到SSH远程连接，在转圈圈的时候必须刷新一次网页再耐心等待，如果2分钟时间还没打开就再刷新一次，如果还展不开来就每分钟刷新一次，但是不能频繁刷新，因为展开是要时间的，频繁刷新就展开都给刷走了
 #
-- [lede源码的luci-app-dockerman跟luci-app-docker两个都是docker-ce容器，luci-app-dockerman是我后加的，两个插件不能同时编译，同时编译会失败，luci-app-docker是源码自带的，你们可以编译出来对比下那个好用就用那个好了，](#/README.md)
+- 插件包经常更新，大家有时间就看看更新了什么没，有时候我也会在里面写些说明之类的 【[插件包](https://github.com/281677160/openwrt-package)】
 #
 - [大家如果编译的时候没乱搞而又出现编译错误的，要善于在各个作者源码的‘Issues’找答案或者提问](#/README.md)
 
 #
-# 编译说明：
+## 编译说明：
 #
 ### - 以下的说明教程都是在我另外的仓库的，查看说明时候就跳转到另外仓库了，浏览器回退就会回来，别拉取到我说明的仓库，注意了！
 #
@@ -49,6 +49,7 @@
 《[固件包减负](https://github.com/danshui-git/shuoming/blob/master/%E5%9B%BA%E4%BB%B6%E6%96%87%E4%BB%B6%E5%A4%B9%E6%95%B4%E7%90%86.md)》
 《[banner的说明](https://github.com/danshui-git/shuoming/blob/master/banner%E8%AF%B4%E6%98%8E.md)》
 《[patch补丁制作](https://github.com/danshui-git/shuoming/blob/master/buding.md)》
+《[NTFS优盘挂载](https://github.com/danshui-git/shuoming/blob/master/NTFS%E6%A0%BC%E5%BC%8F%E4%BC%98%E7%9B%98%E6%8C%82%E8%BD%BD)》
 #
 - 12、建议准备梯子一把，虽然云编译不需要梯子，不过你使用SSH连接、下载固件、打开github网页也是需要梯子比较好的（没有也行，比较卡就是）
 
