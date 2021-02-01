@@ -1,13 +1,10 @@
 # Actions-OpenWrt
 
-<<<<<<< HEAD
-#### - 2021/1/2增加电报机器人信息推送SSH连接代码，有需要的可以去看看，网页展不开来都会信息推送的。【[电报机器人信息推送SSH连接代码说明](https://github.com/danshui-git/shuoming/blob/master/bot.md)】
-=======
+
 #### - 【[Telegram交流群](https://t.me/joinchat/AAAAAE3eOMwEHysw9HMcVQ)】-&nbsp;&nbsp;&nbsp;- 【[Telegram下载](https://telegram.org/)】-&nbsp;&nbsp;&nbsp;- 【[Telegram使用中文方法](https://github.com/danshui-git/shuoming/blob/master/tele.md)】-
 #
 
 - 2021月1月26号说明，26号开始插件包取消任何科学上网插件，有需要的请自行拉取《[拉取插件方法](https://github.com/danshui-git/shuoming/blob/master/ming.md)》，如果编译出现错误或者什么情况的，请大家都拉取我的最新仓库使用。
->>>>>>> 9d80ba539738021c5690977d3729fa0ccacc7552
 
 - 弄了一个启动教程视频，mp4格式，存网盘了，需要的自己下载。《[谷歌云](https://drive.google.com/drive/folders/1WEUtVfiVtR5lyG8aX4RcDGdUPV6uMlxt?usp=sharing)》、《[百度（密码：apek）](https://pan.baidu.com/s/1RVi4nN8Y1ak9LTWzhV5bSQ)》、《[微云](https://share.weiyun.com/33SgJdCO)》
 
