@@ -108,8 +108,8 @@ jobs:
         cd openwrt
         if [ ${{matrix.target}} != openwrt ]; then
           rm -rf package/lienol/luci-app-timecontrol
-          rm -rf package/ntlf9t/{smartdns,luci-app-smartdns}
-          rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3}
+          rm -rf package/diy/luci-app-adguardhome
+          rm -rf package/ctcgfw/{luci-app-argon-config,luci-theme-argonv3,luci-app-adguardhome}
           rm -rf package/lean/{luci-app-netdata,luci-theme-argon,k3screenctrl}
         fi
         
@@ -135,6 +135,7 @@ jobs:
         if [ -n "$(ls -A "build/${{matrix.target}}/patches" 2>/dev/null)" ]; then
           find "build/${{matrix.target}}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
         fi
+        mkdir -p files/usr/bin/AdGuardHome/data
         if [ -n "$(ls -A "build/${{matrix.target}}/files" 2>/dev/null)" ]; then
          cp -rf build/${{matrix.target}}/files files
          chmod -R 777 build/${{matrix.target}}/files/* ./
@@ -153,8 +154,6 @@ jobs:
         elif [ $REPO_URL == "https://github.com/project-openwrt/openwrt" ]; then
          echo "NAME2=Project-" >> $GITHUB_ENV
          echo "ZUOZHE=CTCGFW" >> $GITHUB_ENV
-        elif [ $REPO_URL == "https://github.com/openwrt/openwrt" ]; then
-         echo "NAME2=Official-" >> $GITHUB_ENV
         fi
         rm -rf {LICENSE,README,README.md}
         rm -rf ./*/{LICENSE,README,README.md}
@@ -190,15 +189,13 @@ jobs:
         echo "date=$(date "+%y.%m.%d-%H%M")" >> $GITHUB_ENV
         echo "date1=$(date "+%Y年%m月%d号-%H点%M分")" >> $GITHUB_ENV
         echo "date2=$(date "+%Y%m%d%H%M%S")" >> $GITHUB_ENV
-        DEVICE=$(egrep -o "CONFIG_TARGET.*DEVICE.*=y" .config | sed -r 's/.*(.*)=y/\0/')
-        DEVICE2=$(egrep -o "CONFIG_TARGET.*_64_Generic=y" .config | sed -r 's/.*(.*)=y/\0/')
-        if [ $DEVICE == "CONFIG_TARGET_x86_64_DEVICE_generic=y" ]; then
-         echo "NAME1=x86-64" >> $GITHUB_ENV
-        elif [ $DEVICE2 == "CONFIG_TARGET_x86_64_Generic=y" ]; then
-         echo "NAME1=x86-64" >> $GITHUB_ENV
+        DEVICE=$(awk -F '[="]+' '/TARGET_BOARD/{print $2}' .config)
+        SUBTARGET="$(awk -F '[="]+' '/TARGET_SUBTARGET/{print $2}' .config)"
+        if [ $DEVICE == "x86" ]; then
+         echo "NAME1=x86-${SUBTARGET}" >> $GITHUB_ENV
         elif [ ${{matrix.target}} == "Lede_phicomm_n1" -o ${{matrix.target}} == "Project_phicomm_n1" ];then
          echo "NAME1=n1,Vplus,Beikeyun,L1Pro,S9xxx" >> $GITHUB_ENV
-        elif [ $DEVICE != "CONFIG_TARGET_x86_64_DEVICE_generic=y" ]; then
+        elif [ $DEVICE != "x86" ]; then
          grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > NAME1
          [ -s NAME1 ] && echo "NAME1=$(cat NAME1)" >> $GITHUB_ENV
         fi
